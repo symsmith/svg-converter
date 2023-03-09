@@ -1,0 +1,1 @@
+quick and dirty SVG cleaner, with SvelteKit
