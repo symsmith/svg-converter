@@ -1,5 +1,5 @@
-export function createAttrRegex(name: string) {
-  return new RegExp(name + '="(?:.)*?"', "gm");
+export function createAttrRegex(name: string, firstOnly = false) {
+  return new RegExp(name + '="(?:.)*?"', `${firstOnly ? "" : "g"}m`);
 }
 
 function replaceAt(str: string, index: number, replacement: string) {
@@ -28,8 +28,8 @@ export function convertInput(input: string, addCircledTag: boolean) {
   const xmlns = createAttrRegex("xmlns:xlink");
   const xmlspace = createAttrRegex("xml:space");
   const enableBackground = createAttrRegex("enable-background");
-  const x = createAttrRegex("\\sx");
-  const y = createAttrRegex("\\sy");
+  const x = createAttrRegex("\\sx", true);
+  const y = createAttrRegex("\\sy", true);
   const id = createAttrRegex("id");
   const color = new RegExp('"\\#[0-9a-f]{6}"', "gmi");
 
