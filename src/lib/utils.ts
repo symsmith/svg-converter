@@ -31,6 +31,7 @@ export function convertInput(input: string, addCircledTag: boolean) {
   const x = createAttrRegex("\\sx", true);
   const y = createAttrRegex("\\sy", true);
   const id = createAttrRegex("id");
+  const dataname = createAttrRegex("data-name");
   const color = new RegExp('"\\#[0-9a-f]{6}"', "gmi");
 
   let converted = input
@@ -41,7 +42,8 @@ export function convertInput(input: string, addCircledTag: boolean) {
     .replace(enableBackground, "")
     .replace(x, "")
     .replace(y, "")
-    .replace(id, "");
+    .replace(id, "")
+    .replace(dataname, "");
 
   const attributesRegex = new RegExp('([a-z-]*)="(?:.)*?"', "gmi");
   const attributes = Array.from(
